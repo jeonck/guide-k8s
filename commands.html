@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠버네티스 주요 명령어 - 쿠버네티스 완벽 가이드</title>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button class="theme-toggle" onclick="toggleTheme()">다크 모드 전환</button>
+        </div>
+        
+        <header>
+            <h1>쿠버네티스 주요 명령어</h1>
+            <p>쿠버네티스 클러스터 관리를 위한 필수 kubectl 명령어</p>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">메인 페이지</a></li>
+                <li><a href="examples.html">활용 예시</a></li>
+                <li><a href="commands.html" class="active">주요 명령어</a></li>
+                <li><a href="resources.html">학습 자료</a></li>
+                <li><a href="advanced/features.html">고급 기능</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div id="basic-commands" class="section">
+                <h2>1. 기본 명령어</h2>
+                <div class="command-group">
+                    <h3>클러스터 정보 확인</h3>
+                    <div class="command-item">
+                        <code>kubectl cluster-info</code>
+                        <p>쿠버네티스 클러스터 정보를 표시합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl get nodes</code>
+                        <p>클러스터의 모든 노드 목록을 표시합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl version</code>
+                        <p>클라이언트 및 서버 쿠버네티스 버전을 표시합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="command-group">
+                    <h3>리소스 관리</h3>
+                    <div class="command-item">
+                        <code>kubectl get [resource]</code>
+                        <p>지정된 리소스의 목록을 표시합니다. (예: pods, services, deployments)</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl describe [resource] [name]</code>
+                        <p>지정된 리소스의 상세 정보를 표시합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl create -f [filename]</code>
+                        <p>YAML 또는 JSON 파일에 정의된 리소스를 생성합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl apply -f [filename]</code>
+                        <p>YAML 또는 JSON 파일에 정의된 리소스를 생성하거나 업데이트합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl delete [resource] [name]</code>
+                        <p>지정된 리소스를 삭제합니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="advanced-commands" class="section">
+                <h2>2. 고급 명령어</h2>
+                <div class="command-group">
+                    <h3>로그 및 디버깅</h3>
+                    <div class="command-item">
+                        <code>kubectl logs [pod-name]</code>
+                        <p>지정된 Pod의 로그를 표시합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl exec -it [pod-name] -- [command]</code>
+                        <p>Pod 내에서 특정 명령을 실행합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl port-forward [pod-name] [local-port]:[pod-port]</code>
+                        <p>로컬 포트를 Pod의 포트로 포워딩합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="command-group">
+                    <h3>스케일링 및 업데이트</h3>
+                    <div class="command-item">
+                        <code>kubectl scale deployment [name] --replicas=[count]</code>
+                        <p>디플로이먼트의 레플리카 수를 조정합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl rollout status deployment [name]</code>
+                        <p>디플로이먼트의 롤아웃 상태를 확인합니다.</p>
+                    </div>
+                    <div class="command-item">
+                        <code>kubectl rollout undo deployment [name]</code>
+                        <p>디플로이먼트를 이전 버전으로 롤백합니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="command-examples" class="section">
+                <h2>3. 실전 명령어 예시</h2>
+                <div class="example-scenario">
+                    <h3>애플리케이션 배포 및 확인</h3>
+                    <pre><code>
+# 새 디플로이먼트 생성
+kubectl create deployment nginx-app --image=nginx:latest
+
+# 배포된 Pod 확인
+kubectl get pods
+
+# Pod 상세 정보 확인
+kubectl describe pod [pod-name]
+
+# 서비스 생성하여 외부에 노출
+kubectl expose deployment nginx-app --type=LoadBalancer --port=80
+
+# 서비스 확인
+kubectl get services
+
+# 로그 확인
+kubectl logs [pod-name]
+                    </code></pre>
+                </div>
+                
+                <div class="example-scenario">
+                    <h3>애플리케이션 업데이트</h3>
+                    <pre><code>
+# 이미지 업데이트
+kubectl set image deployment/nginx-app nginx=nginx:1.19
+
+# 롤아웃 상태 확인
+kubectl rollout status deployment/nginx-app
+
+# 문제 발생 시 롤백
+kubectl rollout undo deployment/nginx-app
+
+# 롤아웃 히스토리 확인
+kubectl rollout history deployment/nginx-app
+                    </code></pre>
+                </div>
+            </div>
+        </main>
+        
+        <aside id="toc" class="toc">
+            <h3>목차</h3>
+            <ul>
+                <li><a href="#basic-commands">1. 기본 명령어</a></li>
+                <li><a href="#advanced-commands">2. 고급 명령어</a></li>
+                <li><a href="#command-examples">3. 실전 명령어 예시</a></li>
+            </ul>
+        </aside>
+        
+        <footer>
+            <p>© 2025 쿠버네티스 완벽 가이드 | 이 웹앱은 쿠버네티스 학습을 위해 제작되었습니다.</p>
+        </footer>
+    </div>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>

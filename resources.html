@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠버네티스 학습 자료 - 쿠버네티스 완벽 가이드</title>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button class="theme-toggle" onclick="toggleTheme()">다크 모드 전환</button>
+        </div>
+        
+        <header>
+            <h1>쿠버네티스 학습 자료</h1>
+            <p>쿠버네티스를 더 깊이 이해하기 위한 자료 모음</p>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">메인 페이지</a></li>
+                <li><a href="examples.html">활용 예시</a></li>
+                <li><a href="commands.html">주요 명령어</a></li>
+                <li><a href="resources.html" class="active">학습 자료</a></li>
+                <li><a href="advanced/features.html">고급 기능</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div id="official-docs" class="section">
+                <h2>1. 공식 문서</h2>
+                <ul class="resource-list">
+                    <li>
+                        <h3>쿠버네티스 공식 문서</h3>
+                        <p>쿠버네티스에 대한 가장 신뢰할 수 있는 정보 소스입니다. 개념, 튜토리얼, API 레퍼런스 등 모든 정보가 잘 정리되어 있습니다.</p>
+                        <a href="https://kubernetes.io/ko/docs/home/" target="_blank" class="resource-link">https://kubernetes.io/ko/docs/home/</a>
+                    </li>
+                    <li>
+                        <h3>쿠버네티스 블로그</h3>
+                        <p>쿠버네티스 커뮤니티의 최신 소식과 업데이트, 모범 사례 등을 제공합니다.</p>
+                        <a href="https://kubernetes.io/blog/" target="_blank" class="resource-link">https://kubernetes.io/blog/</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div id="tutorials" class="section">
+                <h2>2. 입문자를 위한 튜토리얼</h2>
+                <ul class="resource-list">
+                    <li>
+                        <h3>Kubernetes Basics (대화형 튜토리얼)</h3>
+                        <p>쿠버네티스의 기본 개념을 배울 수 있는 대화형 튜토리얼입니다.</p>
+                        <a href="https://kubernetes.io/ko/docs/tutorials/kubernetes-basics/" target="_blank" class="resource-link">https://kubernetes.io/ko/docs/tutorials/kubernetes-basics/</a>
+                    </li>
+                    <li>
+                        <h3>Katacoda 쿠버네티스 과정</h3>
+                        <p>브라우저에서 직접 실습할 수 있는 무료 대화형 쿠버네티스 학습 플랫폼입니다.</p>
+                        <a href="https://www.katacoda.com/courses/kubernetes" target="_blank" class="resource-link">https://www.katacoda.com/courses/kubernetes</a>
+                    </li>
+                    <li>
+                        <h3>쿠버네티스 The Hard Way</h3>
+                        <p>쿠버네티스를 처음부터 수동으로 구축하는 방법을 배울 수 있는 고급 튜토리얼입니다.</p>
+                        <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way" target="_blank" class="resource-link">https://github.com/kelseyhightower/kubernetes-the-hard-way</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div id="books" class="section">
+                <h2>3. 추천 서적</h2>
+                <div class="book-list">
+                    <div class="book-item">
+                        <div class="book-cover">
+                            <div class="book-placeholder">도서 표지</div>
+                        </div>
+                        <div class="book-info">
+                            <h3>쿠버네티스 인 액션</h3>
+                            <p>저자: 마르코 룩샤</p>
+                            <p>쿠버네티스의 핵심 개념과 실제 사용 사례를 다루는 실용적인 가이드입니다.</p>
+                        </div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-cover">
+                            <div class="book-placeholder">도서 표지</div>
+                        </div>
+                        <div class="book-info">
+                            <h3>클라우드 네이티브 애플리케이션 구축</h3>
+                            <p>저자: 아짓 반, 피터슨 팀</p>
+                            <p>쿠버네티스를 활용하여 클라우드 네이티브 애플리케이션을 구축하는 방법을 자세히 설명합니다.</p>
+                        </div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-cover">
+                            <div class="book-placeholder">도서 표지</div>
+                        </div>
+                        <div class="book-info">
+                            <h3>프로덕션 쿠버네티스</h3>
+                            <p>저자: 조시 로젠탈</p>
+                            <p>엔터프라이즈 환경에서 쿠버네티스를 운영하는 방법에 대한 포괄적인 가이드입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="communities" class="section">
+                <h2>4. 커뮤니티 및 포럼</h2>
+                <ul class="resource-list">
+                    <li>
+                        <h3>쿠버네티스 슬랙</h3>
+                        <p>쿠버네티스 사용자와 개발자가 모이는 공식 슬랙 채널입니다.</p>
+                        <a href="https://kubernetes.slack.com/" target="_blank" class="resource-link">https://kubernetes.slack.com/</a>
+                    </li>
+                    <li>
+                        <h3>쿠버네티스 포럼</h3>
+                        <p>쿠버네티스 관련 질문과 답변을 찾을 수 있는 공식 포럼입니다.</p>
+                        <a href="https://discuss.kubernetes.io/" target="_blank" class="resource-link">https://discuss.kubernetes.io/</a>
+                    </li>
+                    <li>
+                        <h3>Stack Overflow</h3>
+                        <p>쿠버네티스 관련 기술적 질문과 답변을 찾을 수 있는 대표적인 사이트입니다.</p>
+                        <a href="https://stackoverflow.com/questions/tagged/kubernetes" target="_blank" class="resource-link">https://stackoverflow.com/questions/tagged/kubernetes</a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        
+        <aside id="toc" class="toc">
+            <h3>목차</h3>
+            <ul>
+                <li><a href="#official-docs">1. 공식 문서</a></li>
+                <li><a href="#tutorials">2. 입문자를 위한 튜토리얼</a></li>
+                <li><a href="#books">3. 추천 서적</a></li>
+                <li><a href="#communities">4. 커뮤니티 및 포럼</a></li>
+            </ul>
+        </aside>
+        
+        <footer>
+            <p>© 2025 쿠버네티스 완벽 가이드 | 이 웹앱은 쿠버네티스 학습을 위해 제작되었습니다.</p>
+        </footer>
+    </div>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>

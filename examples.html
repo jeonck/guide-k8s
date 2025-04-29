@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠버네티스 활용 예시 - 쿠버네티스 완벽 가이드</title>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button class="theme-toggle" onclick="toggleTheme()">다크 모드 전환</button>
+        </div>
+        
+        <header>
+            <h1>쿠버네티스 활용 예시</h1>
+            <p>실제 환경에서의 쿠버네티스 적용 사례</p>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">메인 페이지</a></li>
+                <li><a href="examples.html" class="active">활용 예시</a></li>
+                <li><a href="commands.html">주요 명령어</a></li>
+                <li><a href="resources.html">학습 자료</a></li>
+                <li><a href="advanced/features.html">고급 기능</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div id="use-cases" class="section">
+                <h2>1. 실제 활용 사례</h2>
+                <ul>
+                    <li>
+                        <strong>대규모 웹 애플리케이션:</strong> 
+                        <p>수백만 사용자를 지원하는 웹 애플리케이션은 트래픽 부하에 따른 자동 확장이 필요합니다. 쿠버네티스는 자동 스케일링을 통해 트래픽이 증가할 때 자동으로 더 많은 pod를 배포하고, 감소할 때 리소스를 줄입니다.</p>
+                    </li>
+                    <li>
+                        <strong>마이크로서비스 아키텍처:</strong>
+                        <p>복잡한 애플리케이션을 작은 독립적인 서비스로 분해할 때, 쿠버네티스는 이러한 마이크로서비스 간의 통신과 배포를 관리하는 이상적인 플랫폼입니다.</p>
+                    </li>
+                    <li>
+                        <strong>CI/CD 파이프라인:</strong>
+                        <p>지속적 통합 및 배포 파이프라인과 쿠버네티스를 결합하여 새로운 코드 변경 사항을 자동으로 테스트하고 프로덕션에 배포할 수 있습니다.</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div id="case-study" class="section">
+                <h2>2. 기업 사례 연구</h2>
+                <div class="case-study-item">
+                    <h3>글로벌 이커머스 기업</h3>
+                    <p>한 대형 이커머스 회사는 블랙 프라이데이와 같은 대규모 쇼핑 이벤트 기간 동안 급격한 트래픽 증가를 관리하기 위해 쿠버네티스를 도입했습니다. 쿠버네티스의 자동 확장 기능 덕분에 서버 과부하 없이 트래픽 급증을 처리하여 다운타임이 98% 감소했습니다.</p>
+                </div>
+                <div class="case-study-item">
+                    <h3>금융 서비스 기관</h3>
+                    <p>한 금융 기관은 쿠버네티스를 사용하여 레거시 애플리케이션을 현대적인 마이크로서비스 아키텍처로 마이그레이션했습니다. 이를 통해 새로운 기능 개발 속도가 60% 향상되고, 시스템 안정성이 크게 개선되었습니다.</p>
+                </div>
+            </div>
+            
+            <div id="tutorial" class="section">
+                <h2>3. 간단한 배포 예시</h2>
+                <div class="code-example">
+                    <h3>Nginx 웹 서버 배포하기</h3>
+                    <pre><code>
+# 디플로이먼트 생성
+kubectl create deployment nginx-example --image=nginx
+
+# 서비스 노출
+kubectl expose deployment nginx-example --port=80 --type=LoadBalancer
+
+# 배포 상태 확인
+kubectl get pods
+kubectl get services
+                    </code></pre>
+                    <p>이 예시는 Nginx 웹 서버를 쿠버네티스 클러스터에 배포하고 외부에서 접근 가능하도록 LoadBalancer 서비스를 생성합니다.</p>
+                </div>
+                
+                <div class="code-example">
+                    <h3>웹 애플리케이션과 데이터베이스 배포하기</h3>
+                    <p>기본적인 YAML 구성 파일 예시:</p>
+                    <pre><code>
+# web-app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: your-web-app-image:latest
+        ports:
+        - containerPort: 8080
+---
+# web-app-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
+                    </code></pre>
+                </div>
+            </div>
+        </main>
+        
+        <aside id="toc" class="toc">
+            <h3>목차</h3>
+            <ul>
+                <li><a href="#use-cases">1. 실제 활용 사례</a></li>
+                <li><a href="#case-study">2. 기업 사례 연구</a></li>
+                <li><a href="#tutorial">3. 간단한 배포 예시</a></li>
+            </ul>
+        </aside>
+        
+        <footer>
+            <p>© 2025 쿠버네티스 완벽 가이드 | 이 웹앱은 쿠버네티스 학습을 위해 제작되었습니다.</p>
+        </footer>
+    </div>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>

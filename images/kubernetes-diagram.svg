@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- 쿠버네티스 아키텍처 다이어그램 -->
+    <rect x="50" y="50" width="700" height="300" rx="10" fill="#f0f8ff" stroke="#326ce5" stroke-width="2"/>
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold">쿠버네티스 클러스터</text>
+    
+    <!-- 마스터 노드 -->
+    <rect x="100" y="100" width="200" height="200" rx="5" fill="#e6f0ff" stroke="#326ce5" stroke-width="2"/>
+    <text x="200" y="130" text-anchor="middle" font-size="14" font-weight="bold">마스터 노드</text>
+    <rect x="120" y="150" width="160" height="30" rx="3" fill="#326ce5" stroke="none"/>
+    <text x="200" y="170" text-anchor="middle" font-size="12" fill="white">API 서버</text>
+    <rect x="120" y="190" width="160" height="30" rx="3" fill="#326ce5" stroke="none"/>
+    <text x="200" y="210" text-anchor="middle" font-size="12" fill="white">스케줄러</text>
+    <rect x="120" y="230" width="160" height="30" rx="3" fill="#326ce5" stroke="none"/>
+    <text x="200" y="250" text-anchor="middle" font-size="12" fill="white">컨트롤러 매니저</text>
+    
+    <!-- 워커 노드 -->
+    <rect x="500" y="100" width="200" height="200" rx="5" fill="#e6f0ff" stroke="#326ce5" stroke-width="2"/>
+    <text x="600" y="130" text-anchor="middle" font-size="14" font-weight="bold">워커 노드</text>
+    <rect x="520" y="150" width="160" height="30" rx="3" fill="#54b4eb" stroke="none"/>
+    <text x="600" y="170" text-anchor="middle" font-size="12" fill="white">Pod</text>
+    <rect x="520" y="190" width="160" height="30" rx="3" fill="#54b4eb" stroke="none"/>
+    <text x="600" y="210" text-anchor="middle" font-size="12" fill="white">컨테이너</text>
+    <rect x="520" y="230" width="160" height="30" rx="3" fill="#54b4eb" stroke="none"/>
+    <text x="600" y="250" text-anchor="middle" font-size="12" fill="white">Kubelet</text>
+    
+    <!-- 연결선 -->
+    <line x1="300" y1="200" x2="500" y2="200" stroke="#326ce5" stroke-width="2" stroke-dasharray="5,5"/>
+    <polygon points="490,195 500,200 490,205" fill="#326ce5"/>
+</svg>
