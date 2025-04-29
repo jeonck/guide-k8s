@@ -6,6 +6,8 @@
     --heading-color: #1a1a1a;
     --card-bg: #ffffff;
     --border-color: #e0e0e0;
+    --code-bg: #1a1a1a;
+    --code-text: #f0f0f0;
 }
 
 body {
@@ -26,6 +28,8 @@ body {
     --heading-color: #ffffff;
     --card-bg: #1e1e1e;
     --border-color: #333333;
+    --code-bg: #2d2d2d;
+    --code-text: #f0f0f0;
 }
 
 .container {
@@ -129,13 +133,6 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-.highlight {
-    background-color: rgba(50, 108, 229, 0.1);
-    padding: 2px 4px;
-    border-radius: 4px;
-    color: var(--primary-color);
-}
-
 /* 내비게이션 스타일 */
 .main-nav {
     background-color: var(--card-bg);
@@ -186,10 +183,20 @@ footer {
     float: right;
 }
 
-.toc h3 {
+.dark-mode .toc {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toc h3, .toc h4 {
     margin-top: 0;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 8px;
+    color: var(--heading-color);
+}
+
+.toc h4 {
+    margin-top: 15px;
+    font-size: 1rem;
 }
 
 .toc ul {
@@ -228,14 +235,22 @@ footer {
     border-radius: 4px;
 }
 
+.dark-mode .command-item {
+    background-color: rgba(90, 142, 255, 0.1);
+}
+
 .command-item code {
     display: inline-block;
-    background-color: var(--heading-color);
-    color: white;
+    background-color: var(--code-bg);
+    color: var(--code-text);
     padding: 5px 10px;
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     margin-bottom: 5px;
+}
+
+.dark-mode .command-item code {
+    border: 1px solid #555;
 }
 
 .command-item p {
@@ -248,14 +263,20 @@ footer {
     margin-bottom: 30px;
 }
 
-.code-example h3 {
+.dark-mode .code-example {
+    background-color: rgba(90, 142, 255, 0.05);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.code-example h3, .code-example h4 {
     color: var(--primary-color);
     margin-bottom: 10px;
 }
 
 .code-example pre {
-    background-color: var(--heading-color);
-    color: white;
+    background-color: var(--code-bg);
+    color: var(--code-text);
     padding: 15px;
     border-radius: 4px;
     overflow-x: auto;
@@ -263,93 +284,91 @@ footer {
     line-height: 1.4;
 }
 
-/* 리소스 스타일 */
-.resource-list li {
-    margin-bottom: 25px;
-}
-
-.resource-list h3 {
-    color: var(--primary-color);
-    margin-bottom: 5px;
-}
-
-.resource-link {
-    display: inline-block;
-    color: var(--primary-color);
-    text-decoration: none;
-    margin-top: 5px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.resource-link:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
-}
-
-/* 책 목록 스타일 */
-.book-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.book-item {
-    display: flex;
-    background-color: rgba(50, 108, 229, 0.05);
+.highlight {
+    background-color: rgba(50, 108, 229, 0.1);
+    padding: 2px 4px;
     border-radius: 4px;
-    padding: 15px;
-    transition: transform 0.3s ease;
+    color: var(--primary-color);
 }
 
-.book-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.dark-mode .highlight {
+    background-color: rgba(90, 142, 255, 0.15);
 }
 
-.book-cover {
-    width: 100px;
-    margin-right: 15px;
-}
-
-.book-placeholder {
-    width: 100%;
-    height: 130px;
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 0.9rem;
-    border-radius: 4px;
-}
-
-.book-info h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 1.1rem;
-    color: var(--heading-color);
-}
-
-.book-info p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-}
-
-/* 사례 연구 스타일 */
-.case-study-item {
+/* 예시 시나리오 스타일 */
+.example-scenario {
+    margin-bottom: 30px;
     background-color: rgba(50, 108, 229, 0.05);
     padding: 15px;
     border-radius: 4px;
-    margin-bottom: 20px;
 }
 
-.case-study-item h3 {
+.dark-mode .example-scenario {
+    background-color: rgba(90, 142, 255, 0.1);
+}
+
+.example-scenario h3 {
     color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 10px;
 }
 
+.example-scenario pre {
+    background-color: var(--code-bg);
+    color: var(--code-text);
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+.dark-mode .example-scenario pre {
+    border: 1px solid #555;
+}
+
+/* 특징 하이라이트 스타일 */
+.feature-highlight {
+    background-color: rgba(50, 108, 229, 0.1);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+.dark-mode .feature-highlight {
+    background-color: rgba(90, 142, 255, 0.15);
+}
+
+.feature-highlight h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* 코드 싱택스 하이라이팅 스타일 */
+.code-keyword {
+    color: #569cd6; /* 파란색 - 키워드 */
+}
+
+.code-string {
+    color: #ce9178; /* 주황색 - 문자열 */
+}
+
+.code-comment {
+    color: #6a9955; /* 초록색 - 주석 */
+}
+
+.code-number {
+    color: #b5cea8; /* 연한 초록색 - 숫자 */
+}
+
+.code-property {
+    color: #9cdcfe; /* 하늘색 - 속성 */
+}
+
+/* 반응형 스타일 */
 @media (max-width: 768px) {
     h1 {
         font-size: 1.8rem;
